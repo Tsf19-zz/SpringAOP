@@ -11,6 +11,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
+
+
 @Aspect
 public class Logging {
 	
@@ -19,7 +21,18 @@ public class Logging {
     *  all the methods available. So advice will be called
     *  for all the methods.
     */
-   @Pointcut("execution(* com.tousif.AnnotationBasedAOP2.*.*(..))")
+	
+//   @Pointcut("execution(* com.tousif.AnnotationBasedAOP2.*.*(..))")
+	/**
+	 * The above defined <aop:pointcut> selects all the methods defined
+	 * under the package com.tutorialspoint. Let us suppose, you want to
+	 * execute your advice before or after a particular method,
+	 * you can define your pointcut to narrow down your execution by replacing stars (*)
+	 * in pointcut definition with the actual class and method names. 
+	 * 
+	 * */
+	
+	@Pointcut("execution(* com.tousif.AnnotationBasedAOP2.Student.getName(..))")
    private void selectAll(){}
 
    /** 
@@ -57,4 +70,5 @@ public class Logging {
    public void AfterThrowingAdvice(IllegalArgumentException ex){
       System.out.println("There has been an exception: " + ex.toString());   
    }
+   
 }
